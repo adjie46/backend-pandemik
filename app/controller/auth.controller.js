@@ -17,7 +17,6 @@ const EXPIRES_IN_MINUTES = '1440m'
 
 const signIn = (data) => {
     return new Promise(async (resolve, reject) => {
-
         let config = {
             where: data.condition,
             include: {
@@ -102,10 +101,4 @@ exports.signIn = (req, res) => {
             })
         });
 };
-
-exports.LoginPage = (req, res) => {
-    res.render('../views/pages/login.views.hbs', {
-        secretCode: configs.encryptedCode,
-    });
-}
 

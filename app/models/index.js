@@ -22,6 +22,8 @@ db.sequelize = sequelize;
 db.user = require("./user.model")(sequelize, Sequelize);
 db.role = require("./role.model")(sequelize, Sequelize);
 db.auth = require("./auth.model")(sequelize, Sequelize);
+db.jurusan = require("./jurusan.model")(sequelize, Sequelize);
+db.mahasiswa = require("./mahasiswa.model")(sequelize, Sequelize);
 
 
 db.user.belongsTo(db.role, {
@@ -33,5 +35,10 @@ db.auth.belongsTo(db.user, {
     foreignKey: "user_id",
     as: "user",
 })
+
+db.mahasiswa.belongsTo(db.jurusan, {
+    foreignKey: "jurusan_id",
+    as: "jurusan",
+});
 
 module.exports = db;
